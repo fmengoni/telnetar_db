@@ -1,0 +1,58 @@
+-- MySQL dump 10.13  Distrib 5.6.24, for Win64 (x86_64)
+--
+-- Host: vps-910865-x.dattaweb.com    Database: luminarias
+-- ------------------------------------------------------
+-- Server version	5.6.37
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `role`
+--
+
+DROP TABLE IF EXISTS `role`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `role` (
+  `role_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `person_id` bigint(20) unsigned NOT NULL,
+  `class_name` varchar(255) NOT NULL,
+  `state` tinyint(1) NOT NULL DEFAULT '0',
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `token` varchar(100) DEFAULT NULL,
+  `expired_token` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`role_id`),
+  KEY `FK_roleperson_person_id` (`person_id`),
+  CONSTRAINT `FK_roleperson_person_id` FOREIGN KEY (`person_id`) REFERENCES `person` (`person_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `role`
+--
+
+LOCK TABLES `role` WRITE;
+/*!40000 ALTER TABLE `role` DISABLE KEYS */;
+INSERT INTO `role` VALUES (1,2,'UserDto',0,'2013-12-08 21:58:43','2758966.046313009','2015-12-31 17:32:34'),(3,5,'UserDto',0,'2013-12-15 21:00:25',NULL,NULL),(4,7,'UserDto',0,'2014-04-18 13:59:58',NULL,NULL),(8,11,'UserDto',0,'2014-04-26 11:59:51',NULL,NULL),(9,12,'UserDto',0,'2014-04-26 12:04:02','9710573.58369793','2016-09-04 17:43:29'),(10,13,'UserDto',0,'2014-04-26 12:04:32','8185326.40856524','2015-12-10 04:50:30'),(11,14,'UserDto',0,'2014-06-09 00:40:48',NULL,NULL),(12,15,'UserDto',0,'2014-06-29 23:57:07',NULL,NULL),(13,16,'UserDto',0,'2014-07-15 14:51:07',NULL,NULL),(14,17,'UserDto',0,'2014-07-15 14:51:33',NULL,NULL),(15,18,'UserDto',0,'2014-08-26 21:21:17',NULL,NULL),(16,19,'UserDto',0,'2014-09-24 02:10:44',NULL,NULL),(17,20,'UserDto',0,'2015-01-13 01:03:19',NULL,NULL);
+/*!40000 ALTER TABLE `role` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2018-05-16 18:37:05
